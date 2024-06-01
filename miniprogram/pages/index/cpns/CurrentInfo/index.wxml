@@ -1,0 +1,25 @@
+<!--pages/index/cpns/CurrentInfo/index.wxml-->
+<view class="current-info">
+  <view class="address">
+    <text class="icon"></text>
+    <text class="city">{{city}}</text>
+    <text class="county">{{county}}</text>
+    <text class="trig"></text>
+  </view>
+
+  <view class="info">
+    <view class="temp">{{temp}}°</view>
+    <view class="weather">{{weather}}</view>
+    <view class="other">
+      <view class="windy">{{windy}}级</view>
+      <view class="humidity">湿度 {{humidity}}%</view>
+    </view>
+  </view>
+
+  <view class="air">
+    <view class="number">114</view>
+    <view class="quality">轻度污染</view>
+  </view>
+
+  <view class="bill"></view>
+</view>
