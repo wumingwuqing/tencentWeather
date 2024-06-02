@@ -1,7 +1,14 @@
 <!--index.wxml-->
-<navigation-bar title="Weixin" back="{{false}}" color="black" background="#FFF"></navigation-bar>
-<scroll-view class="scrollarea" scroll-y type="list">
+<navigation-bar title="Weixin" back="{{false}}" color="black" background="#FFF" class="nav" style="height: {{0-navigationBar}}px;"></navigation-bar>
+<view class="air-info" style="display: {{airInfoDisplay}};">
+  <AirInfo class="item" bind:closeAirInfo='setAirInfoDisplay' />
+</view>
+<scroll-view class="scrollarea" scroll-y type="list" style=" margin-top:{{placeHolderHeight}}px">
   <view class="container">
-    <CurrentInfo />
+
+    <CurrentInfo bind:showAirInfo="setAirInfoDisplay" />
+
+    <TodyTomorrow />
+
   </view>
 </scroll-view>

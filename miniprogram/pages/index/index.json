@@ -1,6 +1,8 @@
 {
   "usingComponents": {
     "navigation-bar": "/components/navigation-bar/navigation-bar",
-    "CurrentInfo":"./cpns/CurrentInfo"
+    "CurrentInfo": "./cpns/CurrentInfo",
+    "AirInfo": "./cpns/AirInfo",
+    "TodyTomorrow": "./cpns/TodayTomorrow"
   }
 }

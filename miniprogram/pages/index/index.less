@@ -1,7 +1,40 @@
 /**index.less**/
 // 2170px
 page {
-  // height: 99.36vh;
   display: flex;
   flex-direction: column;
+}
+
+.scrollarea {
+  background-color: #f6f6f6;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.air-info {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  width: 100vw;
+  backdrop-filter: blur(2px);
+  background-color: #0000000f;
+  z-index: 998;
+
+  .item {
+    position: fixed;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -43%);
+  }
+
+
 }

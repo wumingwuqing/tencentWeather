@@ -1,5 +1,5 @@
 <!--pages/index/cpns/CurrentInfo/index.wxml-->
-<view class="current-info">
+<view class="current-info" style="background-image: {{bg}};">
   <view class="address">
     <text class="icon"></text>
     <text class="city">{{city}}</text>
@@ -16,10 +16,13 @@
     </view>
   </view>
 
-  <view class="air">
-    <view class="number">114</view>
-    <view class="quality">轻度污染</view>
+  <view class="air" style="background-color: {{air.aqi_color}};" bind:tap="showAirInfo">
+    <view class="number">{{air.aqi}}</view>
+    <view class="quality">{{air.aqi_name}}</view>
   </view>
 
   <view class="bill"></view>
+
+
+
 </view>

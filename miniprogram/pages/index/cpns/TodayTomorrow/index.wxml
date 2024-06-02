@@ -1,0 +1,23 @@
+<!--pages/index/cpns/TodayTomorrow/index.wxml-->
+<view class="today-tomorrow">
+  <view class="item">
+    <view class="degree">
+      <text class="text">今天</text>
+      <text class="value">27/18℃</text>
+    </view>
+    <view class="weather">
+      <text class="text">阴转多云</text>
+      <text class="icon">icon</text>
+    </view>
+  </view>
+  <view class="item">
+    <view class="degree">
+      <text class="text">今天</text>
+      <text class="value">27/18℃</text>
+    </view>
+    <view class="weather">
+      <text class="text">阴转多云</text>
+      <text class="icon">icon</text>
+    </view>
+  </view>
+</view>

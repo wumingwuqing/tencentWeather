@@ -1,0 +1,35 @@
+<!--pages/index/cpns/CurrentInfo/c-cpns/AirInfo/index.wxml-->
+<view class="air-info">
+  <view class="up">
+    <view class="title">空气质量指数</view>
+    <view class="aqi">{{air.aqi}}</view>
+    <view class="aqi-text" style="background-color: {{aqi_color}};">{{air.aqi_name}}</view>
+  </view>
+  <view class="down">
+    <view class="item">
+      <view class="value">{{air['pm2.5']}}</view>
+      <view class="name">PM2.5</view>
+    </view>
+    <view class="item">
+      <view class="value">{{air['pm10']}}</view>
+      <view class="name">PM10</view>
+    </view>
+    <view class="item">
+      <view class="value">{{air['so2']}}</view>
+      <view class="name">SO2</view>
+    </view>
+    <view class="item">
+      <view class="value">{{air['no2']}}</view>
+      <view class="name">NO2</view>
+    </view>
+    <view class="item">
+      <view class="value">{{air['o3']}}</view>
+      <view class="name">O3</view>
+    </view>
+    <view class="item">
+      <view class="value">{{air['co']}}</view>
+      <view class="name">CO</view>
+    </view>
+  </view>
+  <button class="close" bind:tap="closeAirInfo">✕</button>
+</view>

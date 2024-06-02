@@ -1,0 +1,81 @@
+/* pages/index/cpns/CurrentInfo/c-cpns/AirInfo/index.wxss */
+// w:723
+// h：1067
+@import '../../../../asset/img/air-info.less';
+
+.air-info {
+  color: #fcfefd;
+  width: 66.94VW;
+  height: 48.59Vh;
+  position: relative;
+  border-radius: 10px;
+  background-color: #fff;
+
+  .up {
+    // w:723
+    // h:725
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 68%;
+    background-image: @airInfoBGI;
+    background-size: 100% 100%;
+
+
+    .aqi {
+      font-size: 72px;
+    }
+
+    .aqi-text {
+      padding: 2px 20px;
+      height: 25px;
+      line-height: 25px;
+      border-radius: 5px;
+    }
+  }
+
+  .down {
+    height: 32%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-row-gap: 0px;
+    grid-column-gap: 0px;
+
+    .item {
+
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      border-top: 1px solid #e5e6e8;
+      border-right: 1px solid #e5e6e8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .value {
+        color: #3d3d3d;
+      }
+
+      .name {
+        color: #dadada;
+      }
+    }
+  }
+
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    background-color: #3d3d3d00;
+    color: #fcfefd;
+    padding: 0;
+    font-size: larger;
+  }
+}
