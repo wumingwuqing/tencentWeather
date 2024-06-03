@@ -1,4 +1,6 @@
-import { getWeather } from "../../../../utils/myutils"
+import { getImgByWeather } from "../../../../utils/match_pic_color"
+import { parseTodyWreaher } from "../../../../utils/parse_weather"
+import { weatherType } from "./type"
 
 // pages/index/cpns/TodayTomorrow/index.ts
 Component({
@@ -15,18 +17,18 @@ Component({
    */
   data: {
     tody: {
-      degree: {
-        heiDeg: 0,
-        lowDeg: 0
-      },
-      weather: ['', '']
+      maxDeg: '',
+      minDeg: '',
+      weatherDay: '',
+      weatherChange: '',
+      wti: ''
     },
     tomorrow: {
-      degree: {
-        heiDeg: 0,
-        lowDeg: 0
-      },
-      weather: ['', '']
+      maxDeg: '',
+      minDeg: '',
+      weatherDay: '',
+      weatherChange: '',
+      wti: ''
     }
   },
 
@@ -34,27 +36,52 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    // 获取天气
     getWeather() {
-      const weather = getWeather()
-      console.log(weather)
-      if (weather) {
-        this.setData({
-          tody: {
-            degree: {
-              heiDeg: 0,
-              lowDeg: 0
-            },
-            weather: ['', '']
-          },
-          tomorrow: {
-            degree: {
-              heiDeg: 0,
-              lowDeg: 0
-            },
-            weather: ['', '']
-          }
-        })
+      const todydata = parseTodyWreaher('1')
+      const tomorrow = parseTodyWreaher('2')
+      if (todydata) {
+        this.handleTodydata(todydata)
+
       }
+      if (tomorrow) {
+        this.handleTomorrow(tomorrow)
+      }
+    },
+    //处理今日天气
+    handleTodydata(todydata: weatherType) {
+      const maxDeg = todydata.max_degree
+      const minDeg = todydata.min_degree
+      const weatherDay = todydata.day_weather
+      const weatherNight = todydata.night_weather
+      const wti = getImgByWeather(weatherDay)
+      this.setData({
+        tody: {
+          maxDeg,
+          minDeg,
+          weatherDay,
+          weatherChange: weatherDay === weatherNight ? weatherDay : weatherDay + '转' + weatherNight,
+          wti
+        }
+      })
+
+    },
+    // 处理明日天气
+    handleTomorrow(tomorrow: weatherType) {
+      const maxDeg = tomorrow.max_degree
+      const minDeg = tomorrow.min_degree
+      const weatherDay = tomorrow.day_weather
+      const weatherNight = tomorrow.night_weather
+      const wti = getImgByWeather(weatherDay)
+      this.setData({
+        tomorrow: {
+          maxDeg,
+          minDeg,
+          weatherDay,
+          weatherChange: weatherDay === weatherNight ? weatherDay : weatherDay + '转' + weatherNight,
+          wti
+        }
+      })
     }
   },
   /**

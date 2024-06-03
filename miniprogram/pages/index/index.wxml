@@ -10,5 +10,7 @@
 
     <TodyTomorrow />
 
+    <HoursWeather />
+
   </view>
 </scroll-view>

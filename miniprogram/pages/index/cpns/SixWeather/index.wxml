@@ -1,0 +1,26 @@
+<!--pages/index/cpns/SixWeather/index.wxml-->
+<view class="six-weather">
+  <view class="day">
+    <view class="date">
+      <view class="week"></view>
+      <view class="mooth-day"></view>
+    </view>
+    <view class="weather">
+      <view class="name"></view>
+      <view class="icon"></view>
+    </view>
+  </view>
+
+  <view class="line-chat"></view>
+
+  <view class="night">
+    <view class="weather">
+      <view class="icon"></view>
+      <view class="name"></view>
+    </view>
+    <view class="windy">
+      <view class="name"></view>
+      <view class="strength"></view>
+    </view>
+  </view>
+</view>

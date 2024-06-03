@@ -1,6 +1,7 @@
 import { BGCImage } from "../../../../asset/img/current-info"
 import { weatherDataType } from "../../../../service/type"
-import { getBGCByAqiLevel } from "../../../../utils/myutils"
+import { getBGCByAqiLevel } from "../../../../utils/match_pic_color"
+
 
 // pages/index/cpns/CurrentInfo/index.ts
 Component({

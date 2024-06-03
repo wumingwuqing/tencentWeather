@@ -1,0 +1,16 @@
+<!--pages/index/cpns/HoursWeather/index.wxml-->
+
+<view class="hours-weather">
+  <scroll-view scroll-x enable-flex="true" enhanced show-scrollbar scroll-left="center" class="scroll">
+
+    <block wx:for="{{weatherData}}" wx:key="index">
+      <view class="item">
+        <view class="time">{{item.update_time}}</view>
+        <view class="icon" style="background-image: url({{item.icon}});">{{item.weather}}</view>
+        <view class="degree">{{item.degree}}</view>
+      </view>
+    </block>
+
+
+  </scroll-view>
+</view>

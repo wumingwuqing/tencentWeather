@@ -1,5 +1,6 @@
 import { weatherDataType } from "../../../../service/type"
-import { getBGCByAqiLevel } from "../../../../utils/myutils"
+import { getBGCByAqiLevel } from "../../../../utils/match_pic_color"
+
 
 // pages/index/cpns/CurrentInfo/c-cpns/AirInfo/index.ts
 Component({

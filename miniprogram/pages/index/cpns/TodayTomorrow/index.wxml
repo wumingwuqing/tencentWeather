@@ -3,21 +3,21 @@
   <view class="item">
     <view class="degree">
       <text class="text">今天</text>
-      <text class="value">27/18℃</text>
+      <text class="value">{{tody.maxDeg}}/{{tody.minDeg}}℃</text>
     </view>
     <view class="weather">
-      <text class="text">阴转多云</text>
-      <text class="icon">icon</text>
+      <text class="text">{{tody.weatherChange}}</text>
+      <text class="icon" style="background-image: url({{tody.wti}});">icon</text>
     </view>
   </view>
   <view class="item">
     <view class="degree">
-      <text class="text">今天</text>
-      <text class="value">27/18℃</text>
+      <text class="text">明天</text>
+      <text class="value">{{tomorrow.maxDeg}}/{{tomorrow.minDeg}}℃</text>
     </view>
     <view class="weather">
-      <text class="text">阴转多云</text>
-      <text class="icon">icon</text>
+      <text class="text">{{tomorrow.weatherChange}}</text>
+      <view class="icon" style="background-image: url({{tomorrow.wti}});">icon</view>
     </view>
   </view>
 </view>
