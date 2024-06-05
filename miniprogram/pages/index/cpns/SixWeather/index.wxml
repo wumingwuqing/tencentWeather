@@ -1,26 +1,37 @@
 <!--pages/index/cpns/SixWeather/index.wxml-->
 <view class="six-weather">
-  <view class="day">
-    <view class="date">
-      <view class="week"></view>
-      <view class="mooth-day"></view>
-    </view>
-    <view class="weather">
-      <view class="name"></view>
-      <view class="icon"></view>
+
+  <view class="content">
+    <view class="onceday" wx:for="{{week}}" wx:key="index">
+      <view class="day">
+        <view class="date">
+          <view class="week">{{item}}</view>
+          <view class="month-day">{{week_weather[index].time}}</view>
+        </view>
+        <view class="weather">
+          <view class="name">{{week_weather[index].day_weather}}</view>
+          <view class="icon" style="background-image: url({{week_weather[index].day_weather_url}});">icon</view>
+        </view>
+      </view>
+
+      <view class="line-chat">
+
+      </view>
+
+      <view class="night">
+        <view class="weather">
+          <view class="icon" style="background-image: url({{week_weather[index].night_weather_url}});">icon</view>
+          <view class=" name">{{week_weather[index].night_weather}}</view>
+        </view>
+        <view class="windy">
+          <view class="name">{{week_weather[index].night_wind_direction}}</view>
+          <view class="strength">{{week_weather[index].night_wind_power}}级</view>
+        </view>
+      </view>
     </view>
   </view>
 
-  <view class="line-chat"></view>
-
-  <view class="night">
-    <view class="weather">
-      <view class="icon"></view>
-      <view class="name"></view>
-    </view>
-    <view class="windy">
-      <view class="name"></view>
-      <view class="strength"></view>
-    </view>
+  <view class="line-chat-content">
+    <ec-canvas force-use-old-canvas="true" class="mychart-dom-bar" id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}" />
   </view>
 </view>

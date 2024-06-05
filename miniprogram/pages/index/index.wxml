@@ -12,5 +12,7 @@
 
     <HoursWeather />
 
+    <SixWeather />
+
   </view>
 </scroll-view>

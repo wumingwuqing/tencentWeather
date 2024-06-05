@@ -1,1 +1,94 @@
 /* pages/index/cpns/SixWeather/index.wxss */
+// h:1113px
+.six-weather {
+  position: relative;
+
+  .content {
+    background-color: #fff;
+    height: 51.31vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 0px;
+    font-size: 14px;
+
+    .onceday {
+
+      height: 51.31vh;
+      flex: 1;
+      position: relative;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+
+      @margin_top_bottom : 6.44%;
+
+      .day {
+        position: absolute;
+        top: @margin_top_bottom;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        .date {
+          color: #878787;
+        }
+      }
+
+      .night {
+        position: absolute;
+        bottom: @margin_top_bottom;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        .windy {
+          color: #878787;
+          bottom: 0;
+          height: 20%;
+        }
+      }
+
+      .weather {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .icon {
+
+          color: #94949400;
+          background-size: auto 100%;
+          background-repeat: no-repeat;
+          background-position: 50% 0;
+          width: 100%;
+        }
+
+        .name {
+          margin: 2vh 0;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .line-chat-content {
+    position: absolute;
+    top: 30%;
+    left: 0;
+    right: 0;
+    bottom: 30%;
+
+    .mychart-dom-bar {
+      height: 100%;
+      width: 100%;
+      line-height: 100%;
+    }
+  }
+
+
+
+}

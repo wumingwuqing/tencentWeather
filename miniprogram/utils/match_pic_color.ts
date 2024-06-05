@@ -14,9 +14,8 @@ export function getBGCByAqiLevel(level: number): string {
   }
 }
 // 根据天气获取天气图片
-export function getImgByWeather(weather: string) {
+export function getImgByWeather(weather: string, isday = true) {
   let img = ''
-  let isday = true
   switch (weather) {
     case '晴':
       img = isday ? weatherImage.sunny_day.image : weatherImage.sunny_night.image

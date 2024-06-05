@@ -1,5 +1,5 @@
 import { weatherDataType } from "../service/type"
-import { weatherData_time } from "./type"
+import { sevenWeather, weatherData_time } from "./type"
 
 
 
@@ -38,9 +38,11 @@ export function parse7DaysWeather() {
   const weatherData = getWeather()
   if (weatherData) {
     const weatherData_time = weatherData.forecast_24h;
+    const data: sevenWeather = []
     Object.entries(weatherData_time).forEach(([key, value]) => {
-      console.log(key, value);
+      data.push({ key, value })
     });
+    return data
   }
 }
 //某日天气

@@ -4,6 +4,8 @@
     "CurrentInfo": "./cpns/CurrentInfo",
     "AirInfo": "./cpns/AirInfo",
     "TodyTomorrow": "./cpns/TodayTomorrow",
-    "HoursWeather": "./cpns/HoursWeather"
+    "HoursWeather": "./cpns/HoursWeather",
+    "SixWeather": "./cpns/SixWeather",
+    "LifeAdvice": "./cpns/LifeAdvice"
   }
 }
