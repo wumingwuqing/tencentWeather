@@ -1,4 +1,7 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "AdviceItem": "./c-cpns/AdviceItem",
+    "AdviceInfo": "./c-cpns/AdviceInfo"
+  }
 }

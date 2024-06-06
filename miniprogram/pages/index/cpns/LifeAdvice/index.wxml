@@ -1,2 +1,14 @@
 <!--pages/index/cpns/LifeAdvice/index.wxml-->
-<text>pages/index/cpns/LifeAdvice/index.wxml</text>
+<view class="life-advice">
+
+  <swiper class="swiper" indicator-dots indicator-color="#e8e8e8" indicator-active-color="#c0c0c0">
+    <block wx:for="{{advice}}" wx:key="index">
+      <swiper-item>
+        <AdviceItem itemData="{{item}}" />
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <AdviceInfo />
+
+</view>

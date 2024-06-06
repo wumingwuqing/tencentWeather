@@ -1,0 +1,10 @@
+<!--pages/index/cpns/LifeAdvice/c-cpns/AdviceInfo/index.wxml-->
+<view class="advice-info" style="display: {{display}};">
+  <view class="info-content">
+    <view class="title">空气</view>
+    <view class="info">
+      <view class="text"></view>
+      <button class="confirm">我知道了</button>
+    </view>
+  </view>
+</view>

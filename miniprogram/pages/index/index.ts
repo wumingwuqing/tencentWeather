@@ -15,7 +15,6 @@ Component({
   },
   methods: {
     setAirInfoDisplay(display: any) {
-      console.log(display)
       this.setData({
         airInfoDisplay: display.detail ? 'block' : 'none'
       })

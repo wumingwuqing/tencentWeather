@@ -15,7 +15,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-    advice: [{}]
+    advice: [[{}], [{}]],
+
   },
 
   /**
@@ -25,18 +26,27 @@ Component({
     getAdvice() {
       const advice = parseTips()
       if (advice) {
-
+        // 添加图片
         const adviceData = advice.map(item => {
           return { ...item, img: getImgByAdvice(item.key) }
         })
-
-
+        // 平均分组
+        // 不用flitery因为slice速度更快
+        const group1 = adviceData.slice(0, adviceData.length / 2)
+        const group2 = adviceData.slice(adviceData.length / 2, adviceData.length)
+        // 放入data
         this.setData({
-          advice: adviceData
+          advice: [group1, group2]
         })
-        console.log(this.data.advice)
+
       }
-    }
+    },
+    // swiper
+
+
+
+
+
   },
 
   lifetimes: {
