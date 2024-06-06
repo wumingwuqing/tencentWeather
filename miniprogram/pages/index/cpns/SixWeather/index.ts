@@ -84,7 +84,6 @@ Component({
     //初始化图表
     initChart(max_deg: Array<string>, min_deg: Array<string>) {
       const line = this.selectComponent('#mychart-dom-bar')
-      console.log(line)
       line.init((canvas: any, width: any, height: any, dpr: any) => {
         const chart = echarts.init(canvas, null, {
           width: width,

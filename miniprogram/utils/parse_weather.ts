@@ -1,5 +1,5 @@
 import { weatherDataType } from "../service/type"
-import { sevenWeather, weatherData_time } from "./type"
+import { sevenWeather, weatherData_time, tips } from "./type"
 
 
 
@@ -44,6 +44,7 @@ export function parse7DaysWeather() {
     });
     return data
   }
+  return
 }
 //某日天气
 export function parseTodyWreaher(day: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7") {
@@ -60,10 +61,18 @@ export function parseTips() {
   const weatherData = getWeather()
   if (weatherData) {
     const tips = weatherData.index
+    const tipsData: tips = []
     Object.entries(tips).forEach(([key, value]) => {
-      console.log(key, value);
+      if (key !== "time" && key !== 'airconditioner' && key !== 'chill' &&
+        key !== 'mood' && key !== 'sunglasses' && key !== 'ultraviolet' && key !== 'dry'
+      ) {
+        tipsData.push({ key, value: value })
+      }
+
     })
+    return tipsData
   }
+  return
 
 }
 // 日出日落

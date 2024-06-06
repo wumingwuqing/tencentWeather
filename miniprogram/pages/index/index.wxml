@@ -14,5 +14,7 @@
 
     <SixWeather />
 
+    <LifeAdvice />
+
   </view>
 </scroll-view>

@@ -35,3 +35,13 @@ export type sevenWeather = Array<{
     time: string
   }
 }>
+
+export type tips = Array<{
+  key: string
+  value: string | {
+    detail: string;
+    info: string;
+    name: string;
+  }
+
+}> 
