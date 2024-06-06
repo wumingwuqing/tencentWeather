@@ -1,7 +1,7 @@
 <!--pages/index/cpns/LifeAdvice/c-cpns/AdviceItem/index.wxml-->
 <view class="advice-item">
   <block wx:for="{{itemData}}" wx:key="key">
-    <view class="item" bind:tap="onItemTap" data-item="{{item.value}}">
+    <view class="item" bind:tap="onItemTap" data-item="{{({item,display:'block'})}}">
       <view class="icon" style="background-image: url({{item.img}});"> icon </view>
       <view class="text">
         <view class="info">{{item.value.info}} </view>

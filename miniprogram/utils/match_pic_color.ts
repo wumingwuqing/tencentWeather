@@ -46,7 +46,7 @@ export function getImgByWeather(weather: string, isday = true) {
   return img
 
 }
-// 更具建议种类获取图片
+// 根据建议种类获取图片
 export function getImgByAdvice(advice: string) {
   let img: string = ''
   switch (advice) {
@@ -103,4 +103,62 @@ export function getImgByAdvice(advice: string) {
       break;
   }
   return img
+}
+// 根据建议种类获取颜色
+export function getColorByAdvice(advice: string) {
+  let color: string = ''
+  switch (advice) {
+    case "allergy":
+      color = "#97a3d7"
+      break
+    case "carwash":
+      color = "#b8e3ab"
+      break;
+    case "clothes":
+      color = '#dfa5be'
+      break;
+    case "cold":
+      color = "#dbcf9d"
+      break;
+    case "comfort":
+      color = "#a6c78e"
+      break;
+    case "diffusion":
+      color = "#af8c93"
+      break;
+    case "drying":
+      color = "#acb3c5"
+      break;
+    case "fish":
+      color = "#a6e0d1"
+      break;
+    case "heatstroke":
+      color = "#fb8b66"
+      break;
+    case "makeup":
+      color = "#db9798"
+      break;
+    case "morning":
+      color = "#94c3d5"
+      break;
+    case "sports":
+      color = "#e3db9d"
+      break;
+    case "sunscreen":
+      color = "#d0b0a3"
+      break;
+    case "tourism":
+      color = "#ebad96"
+      break;
+    case "traffic":
+      color = "#8ea6aa"
+      break;
+    case "umbrella":
+      color = "#c2a9e0"
+      break;
+    default:
+      color = '#000'
+      break;
+  }
+  return color
 }

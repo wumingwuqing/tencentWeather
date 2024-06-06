@@ -8,7 +8,6 @@ export function getWeather(): weatherDataType | null | undefined {
   try {
     const value: weatherDataType = wx.getStorageSync('wt')
     if (value) {
-      console.log(value)
       return value
     }
   } catch (e) {

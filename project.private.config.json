@@ -5,5 +5,22 @@
     "compileHotReLoad": true,
     "urlCheck": false
   },
-  "libVersion": "3.4.5"
+  "libVersion": "3.4.5",
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/SelectLocation/index",
+          "pathName": "pages/SelectLocation/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null,
+          "partialCompile": {
+            "enabled": true,
+            "pages": []
+          }
+        }
+      ]
+    }
+  }
 }

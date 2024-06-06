@@ -12,16 +12,16 @@ Component({
     barHeight: 0,
     barTop: 0,
     placeHolderHeight: 0,
+
+    lineisplaychange: 'block'
   },
   methods: {
     setAirInfoDisplay(display: any) {
       this.setData({
         airInfoDisplay: display.detail ? 'block' : 'none'
       })
-
     },
     getSystemInfo() {
-
       // 获取距上
       const barTop = wx.getSystemInfoSync().statusBarHeight
       // 获取胶囊按钮位置信息
@@ -32,6 +32,12 @@ Component({
         barHeight,
         barTop,
         placeHolderHeight: barHeight + barTop
+      })
+    },
+    // 修改数据让温度折线图隐藏或显示
+    hideShowLine(display: any) {
+      this.setData({
+        lineisplaychange: display.detail
       })
     }
   },

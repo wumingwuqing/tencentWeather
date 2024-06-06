@@ -1,0 +1,39 @@
+<!--pages/SelectLocation/index.wxml-->
+<navigation-bar title="腾讯天气" back="{{true}}" color="black" background="#FFF" class="nav"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list" style=" margin-top:{{placeHolderHeight}}px">
+  <view class="container">
+    <view class="seach">
+      <input type="text" /> <text>取消</text>
+    </view>
+
+
+    <view class="title">当前定位</view>
+    <view class="current-location">
+      <block wx:for="{{histry}}" wx:key="index">
+        <button bind:tap="onTap" data-province="{{item.province}}" data-city="{{item.city}}" data-county="{{item.county}}">
+          {{item.county===""?item.city:item.county}}
+        </button>
+      </block>
+    </view>
+
+    <view class="title">历史记录</view>
+    <view class="histroy">
+      <block wx:for="{{histry}}" wx:key="index">
+        <button bind:tap="onTap" data-province="{{item.province}}" data-city="{{item.city}}" data-county="{{item.county}}">
+          {{item.county===""?item.city:item.county}}
+        </button>
+      </block>
+    </view>
+
+
+    <view class="title">热门城市</view>
+    <view class="hot-city">
+      <block wx:for="{{hotCity}}" wx:key="index">
+        <button bind:tap="onTap" data-province="{{item.province}}" data-city="{{item.city}}" data-county="{{item.county}}">
+          {{item.county===""?item.city:item.county}}
+        </button>
+      </block>
+    </view>
+
+  </view>
+</scroll-view>

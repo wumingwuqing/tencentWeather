@@ -1,6 +1,6 @@
 import { BGCImage } from "../../../../asset/img/current-info"
-import { weatherDataType } from "../../../../service/type"
 import { getBGCByAqiLevel } from "../../../../utils/match_pic_color"
+import { getWeather } from "../../../../utils/parse_weather"
 
 
 // pages/index/cpns/CurrentInfo/index.ts
@@ -30,7 +30,8 @@ Component({
       aqi_name: '',
       aqi_color: ''
     },
-
+    updateTime: '',
+    opacity: 1
   },
 
   /**
@@ -39,26 +40,23 @@ Component({
   methods: {
     // 获取天气情况
     getWeather() {
-      try {
-        const value: weatherDataType = wx.getStorageSync('wt')
-        if (value) {
-          this.setData({
-            bg: this.getBGIByWeather(value.observe.weather),
-            temp: value.observe.degree,
-            weather: value.observe.weather,
-            windy: value.observe.wind_direction_name + " " + value.observe.wind_power,
-            humidity: value.observe.humidity,
-            air: {
-              aqi: value.air.aqi,
-              aqi_name: value.air.aqi_name,
-              aqi_color: getBGCByAqiLevel(value.air.aqi_level),
-            },
-          })
-        }
-      } catch (e) {
-        console.error(e)
-      }
 
+      const value = getWeather()
+      if (value) {
+        this.setData({
+          bg: this.getBGIByWeather(value.observe.weather),
+          temp: value.observe.degree,
+          weather: value.observe.weather,
+          windy: value.observe.wind_direction_name + " " + value.observe.wind_power,
+          humidity: value.observe.humidity,
+          air: {
+            aqi: value.air.aqi,
+            aqi_name: value.air.aqi_name,
+            aqi_color: getBGCByAqiLevel(value.air.aqi_level),
+          },
+          updateTime: value.observe.update_time.substring(8, 10) + ":" + value.observe.update_time.substring(10, 12)
+        })
+      }
     },
     //获取地理位置
     getAddress() {
@@ -69,7 +67,6 @@ Component({
             city: value.city,
             county: value.county,
           })
-
         }
       } catch (e) {
         console.error(e)
@@ -84,12 +81,18 @@ Component({
         case '多云':
           return BGCImage.cloudy.img;
         default:
-          return BGCImage.overcast.img;
+          return BGCImage.cloudy.img;
       }
     },
     //显示空气情况
     showAirInfo() {
       this.triggerEvent('showAirInfo', true)
+    },
+    //选择地址 
+    selectLocation() {
+      wx.redirectTo({
+        url: '/pages/SelectLocation/index'
+      })
     }
   },
   /**
@@ -100,6 +103,14 @@ Component({
     attached: function () {
       this.getWeather()
       this.getAddress()
+    },
+    // 用于关闭刷新时间
+    ready() {
+      setTimeout(() => {
+        this.setData({
+          opacity: 0
+        })
+      }, 1);
     }
   }
 

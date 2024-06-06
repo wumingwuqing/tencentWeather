@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<navigation-bar title="Weixin" back="{{false}}" color="black" background="#FFF" class="nav" style="height: {{0-navigationBar}}px;"></navigation-bar>
+<navigation-bar title="腾讯天气" back="{{false}}" color="black" background="#FFF" class="nav"></navigation-bar>
 <view class="air-info" style="display: {{airInfoDisplay}};">
   <AirInfo class="item" bind:closeAirInfo='setAirInfoDisplay' />
 </view>
@@ -12,9 +12,9 @@
 
     <HoursWeather />
 
-    <SixWeather />
+    <SixWeather lineisplaychange="{{lineisplaychange}}" />
 
-    <LifeAdvice />
+    <LifeAdvice bind:hideShowLine="hideShowLine" />
 
   </view>
 </scroll-view>

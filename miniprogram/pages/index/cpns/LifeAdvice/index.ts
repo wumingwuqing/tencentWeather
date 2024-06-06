@@ -17,6 +17,7 @@ Component({
   data: {
     advice: [[{}], [{}]],
 
+    currentAdviceInfo: {}
   },
 
   /**
@@ -41,18 +42,20 @@ Component({
 
       }
     },
-    // swiper
-
-
-
-
-
+    showAdviceInfo(item: any) {
+      this.setData({
+        currentAdviceInfo: item.detail
+      })
+    },
+    // 发送事件让温度折线图隐藏
+    hideShowLine(display: any) {
+      this.triggerEvent("hideShowLine", display.detail)
+    }
   },
 
   lifetimes: {
     attached() {
       this.getAdvice()
-
     }
   }
 })

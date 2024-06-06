@@ -4,11 +4,11 @@
   <swiper class="swiper" indicator-dots indicator-color="#e8e8e8" indicator-active-color="#c0c0c0">
     <block wx:for="{{advice}}" wx:key="index">
       <swiper-item>
-        <AdviceItem itemData="{{item}}" />
+        <AdviceItem itemData="{{item}}" bind:showAdviceInfo="showAdviceInfo" />
       </swiper-item>
     </block>
   </swiper>
 
-  <AdviceInfo />
+  <AdviceInfo currentAdviceInfo="{{currentAdviceInfo}}" bind:hideShowLine="hideShowLine" />
 
 </view>

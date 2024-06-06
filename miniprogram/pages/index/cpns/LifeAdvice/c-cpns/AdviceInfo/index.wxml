@@ -1,10 +1,8 @@
 <!--pages/index/cpns/LifeAdvice/c-cpns/AdviceInfo/index.wxml-->
 <view class="advice-info" style="display: {{display}};">
   <view class="info-content">
-    <view class="title">空气</view>
-    <view class="info">
-      <view class="text"></view>
-      <button class="confirm">我知道了</button>
-    </view>
+    <view class="title" style="background-color: {{color}};">{{adviceInfo.name}}指数</view>
+    <view class="detail">{{adviceInfo.detail}}</view>
+    <button class="confirm" bind:tap="onConfirmTap" style="background-color: {{color}};">我知道了</button>
   </view>
 </view>

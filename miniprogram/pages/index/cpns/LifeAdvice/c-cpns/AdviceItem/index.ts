@@ -20,14 +20,11 @@ Component({
    */
   methods: {
     onItemTap(data: any) {
-      console.log(data)
-      console.log(data.currentTarget.dataset.item)
+      this.triggerEvent('showAdviceInfo', data.currentTarget.dataset.item)
     }
   },
   lifetimes: {
-    attached() {
-      console.log(this.properties.itemData)
-    }
+
   }
 
 

@@ -1,6 +1,7 @@
 /* pages/index/cpns/LifeAdvice/c-cpns/AdviceInfo/index.wxss */
 
 @left-right: 15%;
+@border-radius: 5px;
 
 .advice-info {
 
@@ -10,6 +11,8 @@
   left: 0;
   right: 0;
   backdrop-filter: blur(1.4px);
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 999;
 
   .info-content {
     position: fixed;
@@ -17,9 +20,29 @@
     transform: translateY(-50%);
     left: @left-right;
     right: @left-right;
-    border: 10px solid #000;
+    background-color: #fff;
+    border-radius: @border-radius;
+
+    .title {
+      border-radius: @border-radius @border-radius 0 0;
+      margin-top: -1px;
+      color: #fff;
+      text-align: center;
+      font-size: 24px;
+      padding: 15px;
+    }
+
+    .detail {
+      box-sizing: border-box;
+      color: #333;
+      margin: 30px 20px 20px 20px;
+    }
+
+    .confirm {
+      color: #fff;
+      font-weight: 400;
+      margin-bottom: 20px;
+      width: 80%;
+    }
   }
-
-
-
 }

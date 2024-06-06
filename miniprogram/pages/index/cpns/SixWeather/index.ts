@@ -10,7 +10,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    lineisplaychange: String
   },
 
   /**
@@ -24,9 +24,21 @@ Component({
       lazyLoad: true // 延迟加载,手动初始化图表
     },
     day_deg: [''],
-    night_deg: ['']
+    night_deg: [''],
+    display: 'block'
   },
 
+  // 数据侦听器
+  observers: {
+    // 控制折线图的显示和隐藏，因为手机上在显示建议详情时折线图会显示错误
+    'lineisplaychange': function (lineisplaychange) {
+      if (lineisplaychange === 'block' || lineisplaychange === 'none') {
+        this.setData({
+          display: lineisplaychange
+        })
+      }
+    }
+  },
   /**
    * 组件的方法列表
    */

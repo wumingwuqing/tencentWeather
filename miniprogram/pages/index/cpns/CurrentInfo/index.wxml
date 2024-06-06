@@ -1,19 +1,27 @@
 <!--pages/index/cpns/CurrentInfo/index.wxml-->
 <view class="current-info" style="background-image: {{bg}};">
-  <view class="address">
+  <view class="address" bind:tap="selectLocation">
     <text class="icon"></text>
     <text class="city">{{city}}</text>
     <text class="county">{{county}}</text>
     <text class="trig"></text>
   </view>
 
+  <view class="updata-time" style="opacity: {{opacity}};">中央气象台 {{updateTime}}发布</view>
+
   <view class="info">
     <view class="temp">{{temp}}°</view>
     <view class="weather">{{weather}}</view>
-    <view class="other">
-      <view class="windy">{{windy}}级</view>
-      <view class="humidity">湿度 {{humidity}}%</view>
-    </view>
+
+    <swiper class="other" circular autoplay interval="5000" duration="1000" vertical>
+      <swiper-item class="windy">
+        <view>{{windy}}级</view>
+      </swiper-item>
+      <swiper-item class="humidity">
+        <view>湿度 {{humidity}}%</view>
+      </swiper-item>
+    </swiper>
+
   </view>
 
   <view class="air" style="background-color: {{air.aqi_color}};" bind:tap="showAirInfo">
