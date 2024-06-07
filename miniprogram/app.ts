@@ -4,7 +4,6 @@ import getWeather from "./service/getWeather"
 App<IAppOption>({
   globalData: {},
   onLaunch() {
-
     getWeather().then(res => {
       if (res.status === 200 && res.message === "OK") {
         wx.setStorageSync('wt', res.data)

@@ -1,8 +1,26 @@
-import { debounce } from "../../utils/thr_deb"
 
-const fn = debounce((inputvalue: any) => {
-  console.log(inputvalue)
-}, 100, { first: false, end: true })
+import { getProvince } from "../../service/getProvince"
+import getWeather from "../../service/getWeather"
+type location = { province: string; city: string; county: string; }[] | null
+
+
+
+
+async function getLocation(inputvalue: any): Promise<location> {
+  const res: any = await getProvince(inputvalue)
+  if (Object.values(res.data)[0]) {
+    // 获取地址数据
+    const location: location = Object.values<string>(res.data).map(item => {
+      const data = item.split(',')
+      return {
+        province: data[0], city: data[1], county: data[2]
+      }
+    })
+    return location
+  }
+  return null
+}
+
 // pages/SelectLocation/index.ts
 Component({
 
@@ -10,41 +28,64 @@ Component({
    * 页面的初始数据
    */
   data: {
-    //page-meta
+
     barHeight: 0,
     barTop: 0,
     placeHolderHeight: 0,
 
-    current: [{ province: '河南省', city: '平顶山', county: '新华区' }],
+    candidate: Array<{ province: string; city: string; county: string; }>(),
+    candidatevis: false,
 
-    histry: [
-      { province: '北京', city: '北京', county: '' },
-      { province: '上海', city: '上海', county: '' },
-      { province: '河南', city: '三门峡', county: '渑池' },],
+    current: [{ province: '河南', city: '平顶山', county: '新华区' }],
+
+    histry: [{}],
+    histryShow: 'none',
+
     hotCity: [
-      { province: '北京', city: '北京', county: '' },
-      { province: '上海', city: '上海', county: '' },
-      { province: '广东', city: '广州', county: '' },
-      { province: '广东', city: '深圳', county: '' },
-      { province: '河南', city: '郑州', county: '' },
-      { province: '陕西', city: '西安', county: '' },
-      { province: '江苏', city: '南京', county: '' },
-      { province: '浙江', city: '杭州', county: '' },
-      { province: '湖北', city: '武汉', county: '' },
-      { province: '四川', city: '成都', county: '' },
-      { province: '辽宁', city: '沈阳', county: '' },
-      { province: '天津', city: '天津', county: '' },],
-    inputvalue: ''
+      { province: '北京', city: '北京', county: '北京' },
+      { province: '上海', city: '上海', county: '上海' },
+      { province: '广东', city: '广州', county: '广州' },
+      { province: '广东', city: '深圳', county: '深圳' },
+      { province: '河南', city: '郑州', county: '郑州' },
+      { province: '陕西', city: '西安', county: '西安' },
+      { province: '江苏', city: '南京', county: '南京' },
+      { province: '浙江', city: '杭州', county: '杭州' },
+      { province: '湖北', city: '武汉', county: '武汉' },
+      { province: '四川', city: '成都', county: '成都' },
+      { province: '辽宁', city: '沈阳', county: '沈阳' },
+      { province: '天津', city: '天津', county: '天津' },],
+
+
+    inputvalue: '',
+    timeId: -100
   },
   observers: {
-    // 双向绑定触发数据侦听器
-    'inputvalue': function (inputvalue: any) {
-
-      // 使用防抖技术
-      console.log(inputvalue)
-
-      fn(inputvalue)
-
+    // 双向绑定触发数据侦听器获取位置列表
+    'inputvalue': function (inputvalue: string) {
+      if (this.data.timeId >= 0) clearTimeout(this.data.timeId)//清除定时器
+      // 500ms后执行
+      this.data.timeId = setTimeout(async () => {
+        // 隐藏和显示目标元素
+        if (inputvalue.length > 0) {
+          // 显示
+          this.setData({
+            candidatevis: true
+          })
+        } else {
+          // 隐藏
+          this.setData({
+            candidate: [],
+            candidatevis: false
+          })
+        }
+        // 获取数据
+        const location: location = await getLocation(inputvalue)
+        if (location) {
+          this.setData({
+            candidate: location
+          })
+        }
+      }, 100)
     }
   },
 
@@ -70,13 +111,48 @@ Component({
         city: data.currentTarget.dataset.city,
         county: data.currentTarget.dataset.county,
       }
-      console.log(location)
-    }
+      const lc = {
+        target: {
+          dataset: {
+            item: location
+          }
+        }
+      }
+      this.setLocation(lc)
+    },
 
+    setLocation(e: any) {
+      // 获取数据
+      const location: { province: string; city: string; county: string; } = e.target.dataset.item
+      // 设置数据
+      getWeather(location.province, location.city, location.county).then((res: any) => {
+        if (res.status === 200 && res.message === "OK") {
+          // 设置Storage
+          wx.setStorageSync('wt', res.data)
+          wx.setStorageSync('address', { province: location.province, city: location.city, county: location.county })
+          // 设置histry
+          this.data.histry.unshift(location)
+          if (this.data.histry.length > 3) {
+            this.data.histry.pop()
+          }
+          wx.setStorageSync('histroy', this.data.histry)
+          // 跳回首页
+          wx.redirectTo({
+            url: '/pages/index/index'
+          })
+        }
+      })
+    }
   },
   lifetimes: {
     attached() {
       this.getSystemInfo()
+      this.setData({
+        histry: wx.getStorageSync('histroy') || []
+      })
+      this.setData({
+        histryShow: this.data.histry.length > 0 ? 'flex' : 'none'
+      })
     }
   }
 

@@ -1,32 +1,43 @@
 <!--pages/SelectLocation/index.wxml-->
 <navigation-bar title="腾讯天气" back="{{true}}" color="black" background="#FFF" class="nav"></navigation-bar>
 <scroll-view class="scrollarea" scroll-y type="list" style=" margin-top:{{placeHolderHeight}}px">
-  <view class="container">
 
-    <view class="search">
-      <view class="searchBg">
-        <view>
-          <image src="../../asset/img/search-1.jpg" style="width:25px;height:25px;"></image>
-        </view>
-        <view>
-          <input type="text" placeholder="搜索市，区，县等" model:value="{{inputvalue}}" />
-        </view>
+
+  <view class="search">
+    <view class="searchBg">
+      <view>
+        <image src="../../asset/img/search-1.jpg" style="width:25px;height:25px;"></image>
       </view>
-      <view class="button">取消</view>
+      <view>
+        <input type="text" placeholder="搜索市，区，县等" model:value="{{inputvalue}}" />
+      </view>
     </view>
+    <view class="button">取消</view>
+  </view>
 
+  <view class="candidate" style="display:{{candidatevis? 'block':'none'}};">
+    <view class="tip" style="display:{{candidate.length>0? 'none':'block'}};">抱歉，未找到相关位置</view>
+    <block wx:for="{{candidate}}" wx:key="index">
+      <view class="result" bind:tap="setLocation" data-item="{{item}}">
+        {{item.province}}，{{item.city}}，{{item.county}}
+      </view>
+    </block>
+
+  </view>
+
+  <view class="loc" style="display:{{candidatevis?'none': 'block' }};">
 
     <view class="title">当前定位</view>
     <view class="current-location">
-      <block wx:for="{{histry}}" wx:key="index">
+      <block wx:for="{{current}}" wx:key="index">
         <button bind:tap="onTap" data-province="{{item.province}}" data-city="{{item.city}}" data-county="{{item.county}}">
           {{item.county===""?item.city:item.county}}
         </button>
       </block>
     </view>
 
-    <view class="title">历史记录</view>
-    <view class="histroy">
+    <view class="title" style="display: {{histryShow}};">历史记录</view>
+    <view class="histroy" style="display: {{histryShow}};">
       <block wx:for="{{histry}}" wx:key="index">
         <button bind:tap="onTap" data-province="{{item.province}}" data-city="{{item.city}}" data-county="{{item.county}}">
           {{item.county===""?item.city:item.county}}
@@ -43,6 +54,7 @@
         </button>
       </block>
     </view>
-
   </view>
+
+
 </scroll-view>

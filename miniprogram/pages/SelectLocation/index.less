@@ -17,73 +17,94 @@ button {
 }
 
 .scrollarea {
-  .container {
+  height: 100vh;
+  position: relative;
 
-    .search {
+  .search {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 2px solid #f2f2f2;
+    margin-bottom: 40px;
+
+    .searchBg {
+      background-color: #E8E8ED;
+      width: 85%;
+      border-radius: 15px;
+      height: 35px;
       display: flex;
       flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      padding: 10px 20px;
-      border-bottom: 2px solid #f2f2f2;
-      margin-bottom: 40px;
 
-      .searchBg {
-        background-color: #E8E8ED;
-        width: 85%;
-        border-radius: 15px;
+      image {
+        margin-left: 10px;
+        margin-top: 5px;
+      }
+
+      input {
         height: 35px;
-        display: flex;
-        flex-direction: row;
-
-        image {
-          margin-left: 10px;
-          margin-top: 5px;
-        }
-
-        input {
-          height: 35px;
-          line-height: 35px;
-          font-size: 20px;
-          margin-left: 15px;
-        }
+        line-height: 35px;
+        font-size: 20px;
+        margin-left: 15px;
       }
-
-      .button {
-        width: 15vw;
-        text-align: center;
-        font-size: 16px;
-      }
-
-
     }
 
-    .current-location,
-    .histroy,
-    .hot-city {
-      width: 100%;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-
-      button {
-        @height: 4vh;
-        text-align: center;
-        margin: 5px;
-        height: 32px;
-        line-height: 13px;
-        width: 30vw;
-        font-size: 16px;
-      }
-
-    }
-
-    .title {
-      margin: 20px 0 10px 15px;
-
+    .button {
+      width: 15vw;
+      text-align: center;
+      font-size: 16px;
     }
 
 
   }
+
+  .candidate {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-top: -30px;
+
+    .tip {
+      text-align: center;
+      color: #888;
+    }
+
+    .result {
+      margin: 0 20px;
+      padding: 10px 10px;
+      border-bottom: 1px solid #ccc;
+    }
+  }
+
+
+  .current-location,
+  .histroy,
+  .hot-city {
+    width: 95vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: center;
+    padding: 0 10px;
+
+    button {
+      @height: 4vh;
+      text-align: center;
+      margin: 5px;
+      height: 32px;
+      line-height: 13px;
+      width: 29vw;
+      font-size: 16px;
+    }
+
+  }
+
+  .title {
+    margin: 20px 0 10px 15px;
+
+  }
+
 }
