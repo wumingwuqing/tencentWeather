@@ -1,5 +1,10 @@
+import { debounce } from "../../utils/thr_deb"
+
+const fn = debounce((inputvalue: any) => {
+  console.log(inputvalue)
+}, 100, { first: false, end: true })
 // pages/SelectLocation/index.ts
-Page({
+Component({
 
   /**
    * 页面的初始数据
@@ -28,39 +33,52 @@ Page({
       { province: '湖北', city: '武汉', county: '' },
       { province: '四川', city: '成都', county: '' },
       { province: '辽宁', city: '沈阳', county: '' },
-      { province: '天津', city: '天津', county: '' },]
-
+      { province: '天津', city: '天津', county: '' },],
+    inputvalue: ''
   },
+  observers: {
+    // 双向绑定触发数据侦听器
+    'inputvalue': function (inputvalue: any) {
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad() {
-    this.getSystemInfo()
-  },
+      // 使用防抖技术
+      console.log(inputvalue)
 
-  getSystemInfo() {
-    // 获取距上
-    const barTop = wx.getSystemInfoSync().statusBarHeight
-    // 获取胶囊按钮位置信息
-    const menuButtonInfo = wx.getMenuButtonBoundingClientRect()
-    // 获取导航栏高度
-    const barHeight = menuButtonInfo.height + (menuButtonInfo.top - barTop) * 2
-    this.setData({
-      barHeight,
-      barTop,
-      placeHolderHeight: barHeight + barTop
-    })
-  },
+      fn(inputvalue)
 
-  onTap(data: any) {
-    const location = {
-      province: data.currentTarget.dataset.province,
-      city: data.currentTarget.dataset.city,
-      county: data.currentTarget.dataset.county,
     }
-    console.log(location)
+  },
 
+  methods: {
 
+    getSystemInfo() {
+      // 获取距上
+      const barTop = wx.getSystemInfoSync().statusBarHeight
+      // 获取胶囊按钮位置信息
+      const menuButtonInfo = wx.getMenuButtonBoundingClientRect()
+      // 获取导航栏高度
+      const barHeight = menuButtonInfo.height + (menuButtonInfo.top - barTop) * 2
+      this.setData({
+        barHeight,
+        barTop,
+        placeHolderHeight: barHeight + barTop
+      })
+    },
+
+    onTap(data: any) {
+      const location = {
+        province: data.currentTarget.dataset.province,
+        city: data.currentTarget.dataset.city,
+        county: data.currentTarget.dataset.county,
+      }
+      console.log(location)
+    }
+
+  },
+  lifetimes: {
+    attached() {
+      this.getSystemInfo()
+    }
   }
+
+
 })

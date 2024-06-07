@@ -2,8 +2,17 @@
 <navigation-bar title="腾讯天气" back="{{true}}" color="black" background="#FFF" class="nav"></navigation-bar>
 <scroll-view class="scrollarea" scroll-y type="list" style=" margin-top:{{placeHolderHeight}}px">
   <view class="container">
-    <view class="seach">
-      <input type="text" /> <text>取消</text>
+
+    <view class="search">
+      <view class="searchBg">
+        <view>
+          <image src="../../asset/img/search-1.jpg" style="width:25px;height:25px;"></image>
+        </view>
+        <view>
+          <input type="text" placeholder="搜索市，区，县等" model:value="{{inputvalue}}" />
+        </view>
+      </view>
+      <view class="button">取消</view>
     </view>
 
 
