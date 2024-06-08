@@ -142,7 +142,15 @@ Component({
           })
         }
       })
+    },
+    back() {
+      // 跳回首页
+      wx.redirectTo({
+        url: '/pages/index/index'
+      })
     }
+
+
   },
   lifetimes: {
     attached() {

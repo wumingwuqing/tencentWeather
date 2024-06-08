@@ -3,9 +3,10 @@ import { weatherImage } from "../asset/img/weather-image";
 
 // 根据空气质量等级获取颜色
 export function getBGCByAqiLevel(level: number): string {
+  console.log(level)
   switch (level) {
     case 1:
-      return 'a3d765'
+      return '#b4df86'
     case 2:
       return '#efce35'
     case 3:
@@ -38,6 +39,12 @@ export function getImgByWeather(weather: string, isday = true) {
       break
     case '日落':
       img = weatherImage.sun_drop.image
+      break
+    case '扬沙':
+      img = weatherImage.up_sand.image
+      break
+    case '雷阵雨':
+      img = weatherImage.linging_rain.image
       break
     default:
       img = ''

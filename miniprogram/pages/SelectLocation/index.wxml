@@ -1,5 +1,5 @@
 <!--pages/SelectLocation/index.wxml-->
-<navigation-bar title="腾讯天气" back="{{true}}" color="black" background="#FFF" class="nav"></navigation-bar>
+<navigation-bar title="腾讯天气" back="{{true}}" color="black" background="#FFF" class="nav" bind:back="back"></navigation-bar>
 <scroll-view class="scrollarea" scroll-y type="list" style=" margin-top:{{placeHolderHeight}}px">
 
 
