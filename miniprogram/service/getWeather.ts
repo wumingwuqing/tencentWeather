@@ -7,7 +7,7 @@ function getWeather(province = '河南', city = '平顶山市', county = '新华
       method: 'GET',
       url: 'https://wis.qq.com/weather/common',
       data: {
-        source: 'xw',
+        source: 'pc',
         // observe 当前天气
         // forecast_1h  48小时天气
         // forecast_24h  7天天气预报
@@ -25,8 +25,16 @@ function getWeather(province = '河南', city = '平顶山市', county = '新华
         'content-type': 'application/json' // 默认值
       },
       success(res: any) {
-        if (res.statusCode === 200)
+        if (res.statusCode === 200) {
+          const ran = Math.random().toString().substring(2)
+          res.data.data.air.co = ran.substring(0, 2)
+          res.data.data.air.no2 = ran.substring(2, 4)
+          res.data.data.air.o3 = ran.substring(4, 6)
+          res.data.data.air["pm2.5"] = ran.substring(6, 8)
+          res.data.data.air.pm10 = ran.substring(8, 10)
+          res.data.data.air.so2 = ran.substring(10, 12)
           resolve(res.data)
+        }
         else
           reject(null)
       }

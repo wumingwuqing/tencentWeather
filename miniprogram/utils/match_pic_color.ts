@@ -3,7 +3,6 @@ import { weatherImage } from "../asset/img/weather-image";
 
 // 根据空气质量等级获取颜色
 export function getBGCByAqiLevel(level: number): string {
-  console.log(level)
   switch (level) {
     case 1:
       return '#b4df86'
