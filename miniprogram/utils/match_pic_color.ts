@@ -45,6 +45,12 @@ export function getImgByWeather(weather: string, isday = true) {
     case '雷阵雨':
       img = weatherImage.linging_rain.image
       break
+    case '暴雨':
+      img = weatherImage.angry_rain.image
+      break
+    case '阵雨':
+      img = weatherImage.sometime_rain.image
+      break
     default:
       img = ''
       break;

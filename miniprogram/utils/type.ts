@@ -44,4 +44,6 @@ export type tips = Array<{
     name: string;
   }
 
-}> 
+}>
+
+export type uniqueObjectArrayType = Array<{ province: string, city: string, county: string }>

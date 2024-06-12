@@ -1,6 +1,7 @@
 
 import { getProvince } from "../../service/getProvince"
 import getWeather from "../../service/getWeather"
+import { uniqueObjectArray } from "../../utils/util"
 type location = { province: string; city: string; county: string; }[] | null
 
 
@@ -38,7 +39,7 @@ Component({
 
     current: [{ province: '河南', city: '平顶山', county: '新华区' }],
 
-    histry: [{}],
+    histry: [{ province: '', city: '', county: '' }],
     histryShow: 'none',
 
     hotCity: [
@@ -132,6 +133,10 @@ Component({
           wx.setStorageSync('address', { province: location.province, city: location.city, county: location.county })
           // 设置histry
           this.data.histry.unshift(location)
+          // 数组去重
+          const arr = uniqueObjectArray(this.data.histry)
+          this.data.histry = arr
+          // 不能大于三
           if (this.data.histry.length > 3) {
             this.data.histry.pop()
           }
