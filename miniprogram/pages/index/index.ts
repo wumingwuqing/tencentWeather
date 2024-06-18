@@ -1,7 +1,5 @@
 // index.ts
 
-import getWeather from "../../service/getWeather"
-
 // 获取应用实例
 const app = getApp<IAppOption>()
 
@@ -47,7 +45,6 @@ Component({
   lifetimes: {
 
     attached() {
-
       this.getSystemInfo()
     }
   }
